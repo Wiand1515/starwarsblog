@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import Planets from "./pages/Planets";
+import Starships from "./pages/Starships";
+import Favorites from './pages/Favorites';
+import injectContext from './store/appContext';
+import "./index.css"
+
+
+
+
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    
+    
+
+    <Router>
+    <Navbar/>
+    <Switch>
+    <Route exact path="/" children={ <Home/> } />
+    <Route exact path="/planets" children={ <Planets/> } />
+    <Route exact path="/starships" children={ <Starships/> } />
+    <Route exact path="/fav" children={ <Favorites/> }/>
+    <Route path="*" children={ <Error/> } />
+    </Switch>
+    </Router>
+    
+
+
+
+
+
+
+
+
+
+    </>
   );
 }
 
-export default App;
+export default injectContext(App);
