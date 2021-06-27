@@ -34,11 +34,14 @@ function Home() {
                     name={el.name}
                     src={`/img/characters/${el.id}.jpg`}
                     target={el.id}
-                    favorite={() => {actions.getFav(el.name)}}
+                    favorite={() => {
+                      actions.getFav(el.name)
+                    }}
                   />
 
                   <div
                     className="modal fade"
+                    key={"modal"+el.id}
                     id={"exampleModal" + el.id}
                     tabindex="-1"
                     aria-labelledby={"exampleModalLabel" + el.id}
